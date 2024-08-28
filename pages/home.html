@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverst Web</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.2/main.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.2/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Sidebar de Navegación -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="../Inverst-logo.png" alt="Logo del Sistema" class="logo-img">
+            <span class="logo-text">Inverst</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i><span class="menu-item">Dashboard</span></a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i><span class="menu-item">Centralización de Información</span></a></li>
+                <li><a href="#"><i class="fas fa-calendar-check"></i><span class="menu-item">Seguimiento de Etapas</span></a></li>
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i><span class="menu-item">Organización Eficiente</span></a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i><span class="menu-item">Área de Compras</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i><span class="menu-item">Análisis y Reportes</span></a></li>
+            </ul>
+        </nav>
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <div class="main-content">
+        <!-- Barra de Navegación Superior -->
+        <header class="topbar">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="search-box">
+                <select id="docType" aria-label="Tipo de Documento">
+                    <option value="cedula">Cédula</option>
+                    <option value="pasaporte">Pasaporte</option>
+                </select>
+                <input type="text" id="docNumber" placeholder="Número de Documento" aria-label="Número de Documento" oninput="validateDocumentNumber()">
+                <input type="text" id="docName" placeholder="Nombre del Documento" aria-label="Nombre del Documento" oninput="validateDocumentName()">
+                <button onclick="searchDocument()"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="calendar"></div>
+            <div class="topbar-buttons">
+                <button class="topbar-btn" onclick="goToHome()"><i class="fas fa-home"></i></button>
+                <button class="topbar-btn" onclick="openMessages()"><i class="fas fa-comments"></i></button>
+                <button class="topbar-btn" onclick="openNotifications()"><i class="fas fa-bell"></i></button>
+            </div>
+            <div class="user-menu">
+                <span class="username">Usuario</span>
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fas fa-user"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#"><i class="fas fa-user-circle"></i> Perfil</a>
+                        <a href="#"><i class="fas fa-cogs"></i> Configuración</a>
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Panel de Estado de Procesos -->
+        <main>
+            <section class="status-panel">
+                <div class="chart">
+                    <h3>Gráficos de Seguimiento</h3>
+                    <canvas id="statusChart"></canvas>
+                </div>
+                <div class="tasks-alerts">
+                    <h3>Alertas y Tareas Pendientes</h3>
+                    <ul id="taskList">
+                        <li>No tienes tareas pendientes.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Accesos Directos -->
+            <section class="shortcuts">
+                <h3>Accesos Directos</h3>
+                <div class="shortcut-links">
+                    <a href="#" class="shortcut">Centralización de Información</a>
+                    <a href="#" class="shortcut">Seguimiento de Etapas</a>
+                    <a href="#" class="shortcut">Organización Eficiente</a>
+                    <a href="#" class="shortcut">Interacción con el Área de Compras</a>
+                    <a href="#" class="shortcut">Análisis y Reportes</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

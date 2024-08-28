@@ -1,0 +1,291 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar de Navegación */
+.sidebar {
+    width: 60px;
+    background-color: #1d1f27;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.expanded {
+    width: 250px;
+}
+
+.sidebar .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.expanded .logo {
+    opacity: 1;
+}
+
+.sidebar .logo-img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.sidebar .logo-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    width: 100%;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar nav ul li a i {
+    margin-right: 10px;
+}
+
+.sidebar nav ul li a .menu-item {
+    display: none;
+}
+
+.sidebar.expanded nav ul li a .menu-item {
+    display: inline;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #50565e;
+    padding-left: 20px;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: auto;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-toggle .fa-chevron-right {
+    transform: rotate(0deg);
+}
+
+.sidebar.expanded .sidebar-toggle .fa-chevron-right {
+    transform: rotate(180deg);
+}
+
+/* Contenido Principal */
+.main-content {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+}
+
+.sidebar.expanded + .main-content {
+    margin-left: 250px;
+}
+
+/* Barra de Navegación Superior */
+.topbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box select,
+.search-box input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-box button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: #0056b3;
+}
+
+.topbar-buttons button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.topbar-buttons button:hover {
+    color: #007bff;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+}
+
+.user-menu .username {
+    margin-right: 10px;
+}
+
+.user-menu .dropdown {
+    position: relative;
+}
+
+.user-menu .dropdown .dropbtn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.user-menu .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1;
+}
+
+.user-menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.user-menu .dropdown .dropdown-content a {
+    padding: 12px;
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.user-menu .dropdown .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Panel de Estado de Procesos */
+.status-panel {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.status-panel .chart {
+    width: 60%;
+}
+
+.status-panel .tasks-alerts {
+    width: 35%;
+}
+
+.status-panel canvas {
+    width: 100%;
+    height: 250px;
+}
+
+/* Accesos Directos */
+.shortcuts {
+    margin-top: 20px;
+}
+
+.shortcuts h3 {
+    margin-bottom: 10px;
+}
+
+.shortcut-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.shortcut-links .shortcut {
+    display: block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.shortcut-links .shortcut:hover {
+    background-color: #0056b3;
+}
+
+/* Calendario */
+#calendar {
+    margin-right: 20px;
+}
